@@ -109,7 +109,7 @@ The module uses a simple reservation system, updating the `reserved` status for 
 Each output is clearly formatted for readability, with separator lines between entries for better visualization.
 
 ----
-### 8. search.py
+### 9. search.py
 `search.py` defines the `search_animal` function, which allows users to search and update the details of specific dogs or monkeys in the system.
 
 - **Animal Search**: The function prompts the user to input the animal type (dog or monkey) and the name of the animal they wish to search for. It validates the input to ensure accuracy and returns the details if the animal is found.
@@ -122,7 +122,7 @@ Each operation is optimized for quick lookups and updates using dictionaries, an
 - **Space Complexity:** O(1), as the space requirements are constant and independent of the input size, with the exception of minor variables for input/output operations.
 
 ----
-### 8. validation.py
+### 10. validation.py
 `validation.py` provides a suite of validation methods to ensure the integrity of user inputs within the Grazioso Salvare Animal Rescue database application. This module handles various types of input validation, including null values, numeric values, gender, float values, dates, status, boolean values, species, animal types, yes/no responses, and option choices.
 
 #### Functionality
