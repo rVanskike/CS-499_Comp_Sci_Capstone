@@ -60,14 +60,14 @@ The main responsibility of `initialize.py` include:
 - `get_user_from_db()`: The function that fetches a user record from the database for login verification.
   
 ----
-### 6. intake.py
+### 3. intake.py
 `intake.py` contains functions to intake new dogs and monkeys into their respective database. It gathers user input for all required attributes, validates all fields (e.g., checks if the animal already exists, name is not null, etc.), and appends the new animal to the provided database.
 
 - `intake_new_dog()`: Adds a new dog to the `Dog` database based on user input.
 - `intake_new_monkey()`: Adds a new monkey to the `Monkey` database, ensuring the species is allowed.
 
 ----
-### 7. reserve_animal.py
+### 4. reserve_animal.py
 `reserve_animal.py` defines the `reserve_animal` function, which handles the reservation of animals based on user input:
 
 - **Animal Type**: The user can choose between reserving a Dog or a Monkey.
@@ -78,7 +78,7 @@ The main responsibility of `initialize.py` include:
 The module uses a simple reservation system, updating the `reserved` status for the animal when the user confirms the reservation.
 
 ----
-### 8. print_animals.py
+### 5. print_animals.py
 `print_animals.py` defines the `print_animals` function, which prints animal details based on the user's choice:
 
 - **Choice 1**: Lists all dogs in the system with details like breed, gender, age, and training status.
@@ -88,7 +88,7 @@ The module uses a simple reservation system, updating the `reserved` status for 
 Each output is clearly formatted for readability, with separator lines between entries for better visualization.
 
 ----
-### 8. search.py
+### 6. search.py
 `search.py` defines the `search_animal` function, which allows users to search and update the details of specific dogs or monkeys in the system.
 
 - **Animal Search**: The function prompts the user to input the animal type (dog or monkey) and the name of the animal they wish to search for. It validates the input to ensure accuracy and returns the details if the animal is found.
@@ -100,7 +100,7 @@ Each operation is optimized for quick lookups and updates using indexes, and inp
 - **Time Complexity:** O(log n) on average for database lookups and updates when using indexing, O(n) in case of no indexing.
 
 ----
-### 8. validation.py
+### 7. validation.py
 `validation.py` provides a suite of validation methods to ensure the integrity of user inputs within the Grazioso Salvare Animal Rescue database application. This module handles various types of input validation, including null values, numeric values, gender, float values, dates, status, boolean values, species, animal types, yes/no responses, and option choices.
 
 #### Functionality
@@ -122,7 +122,7 @@ The main responsibilities of `validation.py` include:
 Each method is designed to provide clear prompts to the user and ensures that inputs adhere to expected formats and constraints, improving the overall reliability and usability of the application.
 
 ----
-### 9. security.py
+### 8. security.py
 `security.py` provides a suite of security methods to ensure the access control to the Grazioso Salvare Animal Rescue database application. 
 
 #### Functionality
@@ -130,7 +130,7 @@ Each method is designed to provide clear prompts to the user and ensures that in
 TO BE ADDED
 
 ----
-### 10. dashboard.py
+### 9. dashboard.py
 `dashboard.py` provides a suite of GUI related methods to provide the user with a graphical interface for the Grazioso Salvare Animal Rescue database application. 
 
 #### Functionality
@@ -138,7 +138,7 @@ TO BE ADDED
 TO BE ADDED
 
 ----
-### 11. intake_gui.py
+### 10. intake_gui.py
 `intake_gui.py` contains functions to intake new dogs and monkeys into their respective database for the GUI. It gathers user input for all required attributes, validates all fields (e.g., checks if the animal already exists, name is not null, etc.), and appends the new animal to the provided database.
 
 #### Functionality
@@ -146,7 +146,7 @@ TO BE ADDED
 TO BE ADDED
 
 ----
-### 12. edit_gui.py
+### 11. edit_gui.py
 `edit_gui.py` provides a suite of edit methods to allow users to make edits to the selected animal within the GUI. It will allow the user to update the name, country of service, or training status, with appropriate validation.
 
 #### Functionality
@@ -154,7 +154,7 @@ TO BE ADDED
 TO BE ADDED
 
 ----
-### 13. sort_filter.py
+### 12. sort_filter.py
 `sort_filter.py` provides a suite of sorting and filtering methods to allow users to filter and sort the selected database with in the GUI. It will allow the user to sort based off all attributes (e.g., name, country, age, weight, etc.) and it will allow the user to filter by training status, reservation status, or service country.
 
 #### Functionality
