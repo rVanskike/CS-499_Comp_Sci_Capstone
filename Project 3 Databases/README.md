@@ -13,12 +13,12 @@ The project contains the following modules:
 
 The main responsibilities of `driver.py` include:
 
-- **Initialization:** Setting up and populating the `dog_dict` and `monkey_dict` with existing data or preparing them for new entries.
+- **Initialization:** Presenting the Dashboard and Terminal Menu after login.
     -  **Revision change from Dictionary to PostgresSQL Database:** With the need for more scalable and persistent data management, transitioning from an in-memory dictionary to a PostgreSQL database enhances both performance and data integrity. While dictionaries offer O(1) average time complexity for search operations, they are limited by memory constraints and lack persistence across sessions. A PostgreSQL database allows for efficient storage and retrieval of larger datasets without being limited by memory. Using SQL queries, we can search the database with high efficiency using indexed columns, such as animal names, ensuring that lookups remain fast even as the database grows in size. In particular, database indexing provides an O(log n) time complexity for search operations in most cases, which remains scalable for large datasets.      
     - PostgreSQL Database Search Time Complexity:
-    - Search (with indexes): O(log n)
-    - Search (without indexes): O(n)
-    - Insertion: O(log n) with indexing
+        - Search (with indexes): O(log n)
+        - Search (without indexes): O(n)
+        - Insertion: O(log n) with indexing
 - **User Interaction:** Provides both a menu-driven terminal interface and a graphical user interface for the user to utilize various operations, such as adding new dogs or monkeys, listing animals, and reserving animals.
 - **Data Management:** Calling functions from other modules (`intake.py`, `print_animals.py`, `reserve_animal.py`, `search.py`, `dashboard.py`) to perform specific tasks based on user input.
 
@@ -26,13 +26,14 @@ The main responsibilities of `driver.py` include:
 - `login()`: The function that drives logging into the environment. It is the first prompt of the system, and will not present the GUI or Menu until authenticated.
 - `main()`: The main function that drives the application. It displays a menu, handles user choices, and invokes appropriate functions for each action.
 - #### Menu Options:
-    - **Add New Dog:** Calls `intake_new_dog()` from `intake.py` to add a new dog to the `dog_dict`.
-    - **Add New Monkey:** Calls `intake_new_monkey()` from `intake.py` to add a new monkey to the `monkey_dict`.
+    - **Add New Dog:** Calls `intake_new_dog()` from `intake.py` to add a new dog to the `Dog` database.
+    - **Add New Monkey:** Calls `intake_new_monkey()` from `intake.py` to add a new monkey to the `Monkey` database.
     - **Reserve an Animal:** Calls `reserve_animal()` from `reserve_animal.py` to reserve a dog or monkey based on user input.
     - **List All Dogs:** Calls `print_animals()` from `print_animals.py` to display all dogs.
     - **List All Monkeys:** Calls `print_animals()` from `print_animals.py` to display all monkeys.
     - **Get Available Animals:** Calls `print_animals()` from `print_animals.py` to list available dogs and monkeys.
     - **Search Animals and Update:** Calls `search_animal()` from `search.py` to search for an animal and edit it's name, service country, or training status.
+    - **Add New User:** Calls `add_user()` from `security.py` to add a new user to the database.
     - **Display Dashboard:** Calls `Dashboard` Class from `dashboard.py` to present the GUI interface if it is accidentally closed. 
 
 ----
@@ -60,10 +61,10 @@ The main responsibility of `initialize.py` include:
   
 ----
 ### 6. intake.py
-`intake.py` contains functions to intake new dogs and monkeys into their respective lists. It gathers user input for all required attributes, validates all fields (e.g., checks if the animal already exists, name is not null, etc.), and appends the new animal to the provided dictionary.
+`intake.py` contains functions to intake new dogs and monkeys into their respective database. It gathers user input for all required attributes, validates all fields (e.g., checks if the animal already exists, name is not null, etc.), and appends the new animal to the provided database.
 
-- `intake_new_dog()`: Adds a new dog to the `dog_dict` based on user input.
-- `intake_new_monkey()`: Adds a new monkey to the `monkey_dict`, ensuring the species is allowed.
+- `intake_new_dog()`: Adds a new dog to the `Dog` database based on user input.
+- `intake_new_monkey()`: Adds a new monkey to the `Monkey` database, ensuring the species is allowed.
 
 ----
 ### 7. reserve_animal.py
@@ -94,10 +95,9 @@ Each output is clearly formatted for readability, with separator lines between e
 - **Dog Details Update**: If the user selects a dog, the function retrieves the dog's details such as name, country of service, and training status. The user can then choose to update any of these attributes, and the function validates the changes before applying them.
 - **Monkey Details Update**: Similarly, if the user selects a monkey, the function retrieves and displays its details. The user can update the monkey's name, country of service, or training status, with appropriate validation.
   
-Each operation is optimized for quick lookups and updates using dictionaries, and input is validated to ensure proper handling of data, reducing the risk of errors or data corruption.
+Each operation is optimized for quick lookups and updates using indexes, and input is validated to ensure proper handling of data, reducing the risk of errors or data corruption.
 
-- **Time Complexity:** O(1) on average for dictionary lookups and updates, with the worst-case scenario being O(n) in case of hash collisions.
-- **Space Complexity:** O(1), as the space requirements are constant and independent of the input size, with the exception of minor variables for input/output operations.
+- **Time Complexity:** O(log n) on average for database lookups and updates when using indexing, O(n) in case of no indexing.
 
 ----
 ### 8. validation.py
@@ -121,18 +121,69 @@ The main responsibilities of `validation.py` include:
 
 Each method is designed to provide clear prompts to the user and ensures that inputs adhere to expected formats and constraints, improving the overall reliability and usability of the application.
 
+----
+### 9. security.py
+`security.py` provides a suite of security methods to ensure the access control to the Grazioso Salvare Animal Rescue database application. 
+
+#### Functionality
+
+TO BE ADDED
+
+----
+### 10. dashboard.py
+`dashboard.py` provides a suite of GUI related methods to provide the user with a graphical interface for the Grazioso Salvare Animal Rescue database application. 
+
+#### Functionality
+
+TO BE ADDED
+
+----
+### 11. intake_gui.py
+`intake_gui.py` contains functions to intake new dogs and monkeys into their respective database for the GUI. It gathers user input for all required attributes, validates all fields (e.g., checks if the animal already exists, name is not null, etc.), and appends the new animal to the provided database.
+
+#### Functionality
+
+TO BE ADDED
+
+----
+### 12. edit_gui.py
+`edit_gui.py` provides a suite of edit methods to allow users to make edits to the selected animal within the GUI. It will allow the user to update the name, country of service, or training status, with appropriate validation.
+
+#### Functionality
+
+TO BE ADDED
+
+----
+### 13. sort_filter.py
+`sort_filter.py` provides a suite of sorting and filtering methods to allow users to filter and sort the selected database with in the GUI. It will allow the user to sort based off all attributes (e.g., name, country, age, weight, etc.) and it will allow the user to filter by training status, reservation status, or service country.
+
+#### Functionality
+
+TO BE ADDED
+
 ## Usage
 To run the application:
 
-1. Ensure all required modules (`initialize.py`, `rescue_animal.py`, `dog.py`, `monkey.py`, `intake.py`, `reserve_animal.py`, `print_animals.py`, `search.py`, `validation.py`) are in the same directory as driver.py.
-2. Execute the script from the command line:
+1. Ensure all required modules (`initialize.py`, `intake.py`, `reserve_animal.py`, `print_animals.py`, `search.py`, `validation.py`, `dashboard.py`, `security.py`, `intake_gui.py`, `edit_gui.py`, `sort_filter.py`) are in the same directory as driver.py.
+2. Edit the `initialize.py` file to add your local database information:
+     ```bash
+     dbname="DATABASE", user="USERNAME", password="PASSWORD", host="HOST"  
+     ```
+4. If **necessary** remove the first `#` from lines 99, 100, and 101 in `driver.py` to perform initial population of databases.
+     ```bash
+     # Initialize.initialize_dog_list()
+     # Initialize.initialize_monkey_list()
+     # Initialize.initialize_user_list()  
+     ```
+     - **NOTE:** Remember to either remove or comment these back out after first run, or it will repeatedly add these entries to the databases.
+6. Execute the script from the command line:
      ```bash
      python driver.py
      ```
-3. Follow the on-screen prompts to interact with the application. Choose from the menu options to add animals, list them, or reserve them.
+7. Utilize the GUI to access the database, or follow the on-screen prompts to interact with the application.
 
 ## Future Enhancements
-- **Database Integration**: Add persistent storage (e.g., PostgreSQL) to save animals in a database.
-- **GUI Interface**: Create a simple UI using Tkinter for easier interaction.
-- **Secure Login System**: Create a user database and login system to control access.
+- **Rolebased Access Control**: Allow access to certain functions based off user role.
+- **Account Remove / Update**: Allow deletion of users from database and allow to update password.
+- **Animal Deletion:** Allow users to delete animals from their respective databases.
 
