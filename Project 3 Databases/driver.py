@@ -98,6 +98,7 @@ class Driver:
             # Initialize the lists (if needed)
             # Initialize.initialize_dog_list()
             # Initialize.initialize_monkey_list()
+            # Initialize.initialize_user_list()         # If this is uncommmented, it will create a user account with the username 'admin' and password 'password'
             usr_input = ""                              # Instantiate usr_input
 
             while usr_input != "q":                     # While loop that will keep menu displayed until user presses "q"
