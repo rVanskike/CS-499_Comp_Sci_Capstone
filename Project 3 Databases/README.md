@@ -46,40 +46,7 @@ The main responsibility of `initialize.py` include:
 #### Components
 - `initialize_dog_dict()`: The function that drives the populating of the database information for the Grazioso Salvare Animal Rescue database application for the `dog_dict`.
 - `initialize_monkey_dict()`: The function that drives the populating of the database information for the Grazioso Salvare Animal Rescue database application for the `monkey_dict`.
-----
-### 3. rescue_animal.py
-`rescue_animal.py` defines the `RescueAnimal` class, which serves as the base class for all rescued animals. It includes the following attributes:
-
-- `name`
-- `gender`
-- `age`
-- `weight`
-- `acquistion_date`
-- `acquistion_country`
-- `training_status`
-- `reserved`
-- `in_service_country`
   
-This class also provides getter and setter methods for each of the attributes.
-
-----
-### 4. dog.py
-`dog.py` defines the `Dog` class, which inherits from `RescueAnimal`. The `Dog` class adds a `breed` attribute and has corresponding getter and setter methods. It uses the `super()` function to call the `RescueAnimal` constructor for common attributes.
-
-----
-### 5. monkey.py
-`monkey.py` is similar to the `Dog` class, the `Monkey` class inherits from `RescueAnimal`. It adds additional attributes specific to monkeys:
-
-- `species`
-- `tail_length`
-- `height`
-- `body_length`
-- `torso_length`
-- `skull_length`
-- `neck_length`
-
-Each of these attributes has getter and setter methods, allowing you to interact with the data appropriately.
-
 ----
 ### 6. intake.py
 `intake.py` contains functions to intake new dogs and monkeys into their respective lists. It gathers user input for all required attributes, validates all fields (e.g., checks if the animal already exists, name is not null, etc.), and appends the new animal to the provided dictionary.
