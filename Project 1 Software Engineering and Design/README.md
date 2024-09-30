@@ -28,7 +28,7 @@ The main responsibilities of `driver.py` include:
     - **Get Available Animals:** Calls `print_animals()` from `print_animals.py` to list available dogs and monkeys.
 
 ----
-### 2. `initialize.py`
+### 2. initialize.py
 `initialize.py` is responsible for setting up the populating of the database information for the Grazioso Salvare Animal Rescue database application.
 
 #### Functionality
