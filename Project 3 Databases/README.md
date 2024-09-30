@@ -14,15 +14,16 @@ The project contains the following modules:
 The main responsibilities of `driver.py` include:
 
 - **Initialization:** Setting up and populating the `dog_dict` and `monkey_dict` with existing data or preparing them for new entries.
-    -  **Revision change from List to Dictionary:** With the expected expansion of the database, transitioning from a list to a dictionary improves search efficiency. A list has O(n) time complexity for searching, where "n" represents the size of the list. This means that as the number of animals increases, searching through the list would take longer, growing linearly with the number of entries. By switching to a dictionary, which uses hash-based indexing, we achieve an O(1) average time complexity for search operations. This provides constant time lookups regardless of the number of animals in the dictionary, making it significantly faster for retrieving an animal by its name. This decision optimizes search operations, especially as the database grows, providing much more efficient performance compared to lists.
-    -  Dictionary Time Complexity:
-    - Search: O(1) average, O(n) worst-case (in case of hash collisions)
-    - Insertion: O(1) average, O(n) worst-case (in case of hash collisions)
-    - Deletion: O(1) average, O(n) worst-case (in case of hash collisions)
-- **User Interaction:** Providing a menu-driven interface for the user to select various operations, such as adding new dogs or monkeys, listing animals, and reserving animals.
-- **Data Management:** Calling functions from other modules (`intake.py`, `print_animals.py`, `reserve_animal.py`, `search.py`) to perform specific tasks based on user input.
+    -  **Revision change from Dictionary to PostgresSQL Database:** With the need for more scalable and persistent data management, transitioning from an in-memory dictionary to a PostgreSQL database enhances both performance and data integrity. While dictionaries offer O(1) average time complexity for search operations, they are limited by memory constraints and lack persistence across sessions. A PostgreSQL database allows for efficient storage and retrieval of larger datasets without being limited by memory. Using SQL queries, we can search the database with high efficiency using indexed columns, such as animal names, ensuring that lookups remain fast even as the database grows in size. In particular, database indexing provides an O(log n) time complexity for search operations in most cases, which remains scalable for large datasets.      
+    - PostgreSQL Database Search Time Complexity:
+    - Search (with indexes): O(log n)
+    - Search (without indexes): O(n)
+    - Insertion: O(log n) with indexing
+- **User Interaction:** Provides both a menu-driven terminal interface and a graphical user interface for the user to utilize various operations, such as adding new dogs or monkeys, listing animals, and reserving animals.
+- **Data Management:** Calling functions from other modules (`intake.py`, `print_animals.py`, `reserve_animal.py`, `search.py`, `dashboard.py`) to perform specific tasks based on user input.
 
 #### Components
+- `login()`: The function that drives logging into the environment. It is the first prompt of the system, and will not present the GUI or Menu until authenticated.
 - `main()`: The main function that drives the application. It displays a menu, handles user choices, and invokes appropriate functions for each action.
 - #### Menu Options:
     - **Add New Dog:** Calls `intake_new_dog()` from `intake.py` to add a new dog to the `dog_dict`.
@@ -31,7 +32,8 @@ The main responsibilities of `driver.py` include:
     - **List All Dogs:** Calls `print_animals()` from `print_animals.py` to display all dogs.
     - **List All Monkeys:** Calls `print_animals()` from `print_animals.py` to display all monkeys.
     - **Get Available Animals:** Calls `print_animals()` from `print_animals.py` to list available dogs and monkeys.
-    - **Search Animals and Update:** Calls `search_animal()` from `search.py` to search for an animal and edit it's name, service country, or training status. 
+    - **Search Animals and Update:** Calls `search_animal()` from `search.py` to search for an animal and edit it's name, service country, or training status.
+    - **Display Dashboard:** Calls `Dashboard` Class from `dashboard.py` to present the GUI interface if it is accidentally closed. 
 
 ----
 ### 2. `initialize.py`
@@ -41,11 +43,20 @@ The main responsibilities of `driver.py` include:
 
 The main responsibility of `initialize.py` include:
 
-- **Initialization:** Populating the `dog_dict` and `monkey_dict` with existing data.
+- **Initialization:** Populating the `Dog`, `Monkey`, and `Users` databases with existing data.
+- **Connection:** Controls connection to the database through the `connect_db()` and `close_db()` methods.
+- **Database Access:** Controls accessing data from the database with `fetch_all_dogs()`, `fetch_all_monkeys()`, and `get_user_from_db()`.
 
 #### Components
-- `initialize_dog_dict()`: The function that drives the populating of the database information for the Grazioso Salvare Animal Rescue database application for the `dog_dict`.
-- `initialize_monkey_dict()`: The function that drives the populating of the database information for the Grazioso Salvare Animal Rescue database application for the `monkey_dict`.
+- `connect_db()`: The function that connects to the PostgreSQL database and creates tables if they do not exist.
+- `close_db()`: The function that closes the database connection.
+- `create_tables()`: The function that creates the necessary tables in the database if they do not exist.
+- `initialize_dog_list()`: The function that adds initial dog data to the database if the table is empty.
+- `initialize_monkey_list()`: The function that adds initial monkey data to the database if the table is empty.
+- `initialize_user_list()`: The function that adds initial user data to the database if the table is empty.
+- `fetch_all_dogs()`: The function that fetches all dog records from the database.
+- `fetch_all_monkeys()`: The function that fetches all monkey records from the database.
+- `get_user_from_db()`: The function that fetches a user record from the database for login verification.
   
 ----
 ### 6. intake.py
