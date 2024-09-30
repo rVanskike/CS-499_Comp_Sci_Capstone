@@ -37,7 +37,7 @@ The main responsibilities of `driver.py` include:
     - **Display Dashboard:** Calls `Dashboard` Class from `dashboard.py` to present the GUI interface if it is accidentally closed. 
 
 ----
-### 2. `initialize.py`
+### 2. initialize.py
 `initialize.py` is responsible for setting up the populating of the database information for the Grazioso Salvare Animal Rescue database application.
 
 #### Functionality
