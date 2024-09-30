@@ -34,7 +34,7 @@ The main responsibilities of `driver.py` include:
     - **Search Animals and Update:** Calls `search_animal()` from `search.py` to search for an animal and edit it's name, service country, or training status. 
 
 ----
-### 2. `initialize.py`
+### 2. initialize.py
 `initialize.py` is responsible for setting up the populating of the database information for the Grazioso Salvare Animal Rescue database application.
 
 #### Functionality
