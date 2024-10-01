@@ -123,43 +123,107 @@ Each method is designed to provide clear prompts to the user and ensures that in
 
 ----
 ### 8. security.py
-`security.py` provides a suite of security methods to ensure the access control to the Grazioso Salvare Animal Rescue database application. 
+`security.py` provides methods for managing user credentials securely within the Grazioso Salvare Animal Rescue database application. This module handles the addition of new users and the hashing and verification of passwords.
 
 #### Functionality
 
-TO BE ADDED
+The main responsibilities of `security.py` include:
 
+- **Add User**: Processes the addition of a new user to the Users database. Prompts for a username and password, validates the inputs, hashes the password, and stores the user in the database.
+- **Hash Password**: Processes plaintext passwords into hashed passwords using bcrypt.
+- **Verify Password**: Verifies plaintext passwords against hashed passwords to ensure they match.
+
+#### Components
+
+- `add_user(scanner)`: Prompts for a new username and password, validates the inputs, hashes the password, and inserts the new user into the database.
+- `hash_password(password)`: Hashes a plaintext password using bcrypt and returns the hashed password.
+- `verify_password(password, hashed)`: Verifies a plaintext password against a hashed password to ensure they match.
+  
 ----
 ### 9. dashboard.py
-`dashboard.py` provides a suite of GUI related methods to provide the user with a graphical interface for the Grazioso Salvare Animal Rescue database application. 
+`dashboard.py` is the main user interface module for the Grazioso Salvare Animal Rescue database application. It provides a graphical dashboard for managing and viewing data related to rescue animals, including dogs and monkeys. 
 
 #### Functionality
 
-TO BE ADDED
+The main responsibilities of `dashboard.py` include:
+
+- **Initialization**: Sets up the main attributes and user interface components, including the main window, theme, and tabs for dogs and monkeys.
+- **Theme Management**: Allows toggling between dark and light themes.
+- **Widget Creation**: Creates and configures the main widgets, including labels, banners, and tabs.
+- **Data Display**: Populates the tabs with data from the database, displaying information about dogs and monkeys in a structured format.
+- **Sorting and Filtering**: Manages sorting and filtering of data within the tabs.
+- **Intake and Edit Buttons**: Provides buttons for adding new animals and editing existing ones.
+
+#### Components
+
+- `__init__(self, root)`: Initializes the dashboard, sets up the main window, and creates the main widgets.
+- `toggle_theme(self)`: Toggles between dark and light themes.
+- `create_widgets(self)`: Creates the main widgets for the dashboard, including labels, banners, and tabs.
+- `create_treeview(self, frame, columns, tab_name)`: Creates a Treeview widget for displaying data in a tab.
+- `display_dogs(self)`: Populates the Dogs tab with data from the database.
+- `display_monkeys(self)`: Populates the Monkeys tab with data from the database.
+- `add_intake_buttons(self)`: Adds buttons for adding new animals to the tabs.
+- `add_edit_buttons(self)`: Adds buttons for editing existing animals in the tabs.
 
 ----
 ### 10. intake_gui.py
-`intake_gui.py` contains functions to intake new dogs and monkeys into their respective database for the GUI. It gathers user input for all required attributes, validates all fields (e.g., checks if the animal already exists, name is not null, etc.), and appends the new animal to the provided database.
+`intake_gui.py` provides the graphical user interface for the intake of new animals into the Grazioso Salvare Animal Rescue database. This module handles the creation of new windows for entering data about dogs and monkeys, validates the input, and inserts the new records into the database.
 
 #### Functionality
 
-TO BE ADDED
+The main responsibilities of `intake_gui.py` include:
+
+- **Initialization**: Sets up the main attributes and links the dashboard to the intake GUI.
+- **Intake New Dog**: Opens a new window for entering data about a new dog, validates the input, and inserts the new dog into the database.
+- **Intake New Monkey**: Opens a new window for entering data about a new monkey, validates the input, and inserts the new monkey into the database.
+
+#### Components
+
+- `__init__(self, root, dashboard)`: Initializes the intake GUI with the main window and dashboard reference.
+- `intake_new_dog(self)`: Creates a new window for dog intake, adds input fields and a submit button.
+- `submit_new_dog(self, entries, window)`: Collects and validates data from the input fields, inserts the new dog into the database, and refreshes the Dogs Treeview.
+- `intake_new_monkey(self)`: Creates a new window for monkey intake, adds input fields and a submit button.
+- `submit_new_monkey(self, entries, window)`: Collects and validates data from the input fields, inserts the new monkey into the database, and refreshes the Monkeys Treeview.
 
 ----
 ### 11. edit_gui.py
-`edit_gui.py` provides a suite of edit methods to allow users to make edits to the selected animal within the GUI. It will allow the user to update the name, country of service, or training status, with appropriate validation.
+`edit_gui.py` provides the graphical user interface for editing existing animal records in the Grazioso Salvare Animal Rescue database. This module handles the creation of new windows for editing data about dogs and monkeys, validates the input, and updates the records in the database.
 
 #### Functionality
 
-TO BE ADDED
+The main responsibilities of `edit_gui.py` include:
+
+- **Initialization**: Sets up the main attributes and links the dashboard to the edit GUI.
+- **Edit Animal**: Determines which tab is currently selected, retrieves the selected item, and opens a new window for editing the selected animal.
+- **Open Edit Window**: Creates a new window for editing the selected animal, adds input fields pre-filled with the current values, and a submit button.
+- **Submit Edit**: Collects and validates data from the input fields, updates the animal record in the database, and refreshes the Treeview.
+
+#### Components
+
+- `__init__(self, root, dashboard)`: Initializes the edit GUI with the main window and dashboard reference.
+- `edit_animal(self)`: Determines the selected tab and item, and opens the edit window.
+- `open_edit_window(self, item_values, animal_type, item_id, tree)`: Creates a new window for editing the selected animal, adds input fields and a submit button.
+- `submit_edit(self, entries, animal_type, item_id, tree, window)`: Collects and validates data from the input fields, updates the animal record in the database, and refreshes the Treeview.
 
 ----
 ### 12. sort_filter.py
-`sort_filter.py` provides a suite of sorting and filtering methods to allow users to filter and sort the selected database with in the GUI. It will allow the user to sort based off all attributes (e.g., name, country, age, weight, etc.) and it will allow the user to filter by training status, reservation status, or service country.
+`sort_filter.py` provides methods for sorting and filtering data within the Grazioso Salvare Animal Rescue database application. This module handles the sorting of data in Treeview widgets and the creation and application of filters for specific columns.
 
 #### Functionality
 
-TO BE ADDED
+The main responsibilities of `sort_filter.py` include:
+
+- **Sort Data**: Sorts data in a Treeview widget based on a specified column and tab.
+- **Create Filters**: Creates dropdown menus and apply buttons for filtering data in specific columns.
+- **Apply Filter**: Applies the selected filter to the data in the Treeview widget.
+
+#### Components
+
+- `__init__(self)`: Initializes the sort and filter manager with dictionaries for sort order, filters, and detached items.
+- `sort_data(self, tree, column, tab)`: Sorts data in the specified Treeview widget based on the selected column and tab.
+- `create_filters(self, frame, tree, columns)`: Creates dropdown menus and apply buttons for filtering data in the specified columns.
+- `get_unique_values(self, tree, column)`: Retrieves unique values from a specified column in the Treeview widget for filtering.
+- `apply_filter(self, tree, column, combobox)`: Applies the selected filter to the data in the Treeview widget.
 
 ## Usage
 To run the application:
