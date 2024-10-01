@@ -135,9 +135,9 @@ The main responsibilities of `security.py` include:
 
 #### Components
 
-- `add_user(scanner)`: Prompts for a new username and password, validates the inputs, hashes the password, and inserts the new user into the database.
-- `hash_password(password)`: Hashes a plaintext password using bcrypt and returns the hashed password.
-- `verify_password(password, hashed)`: Verifies a plaintext password against a hashed password to ensure they match.
+- `add_user()`: Prompts for a new username and password, validates the inputs, hashes the password, and inserts the new user into the database.
+- `hash_password()`: Hashes a plaintext password using bcrypt and returns the hashed password.
+- `verify_password()`: Verifies a plaintext password against a hashed password to ensure they match.
   
 ----
 ### 9. dashboard.py
@@ -156,14 +156,14 @@ The main responsibilities of `dashboard.py` include:
 
 #### Components
 
-- `__init__(self, root)`: Initializes the dashboard, sets up the main window, and creates the main widgets.
-- `toggle_theme(self)`: Toggles between dark and light themes.
-- `create_widgets(self)`: Creates the main widgets for the dashboard, including labels, banners, and tabs.
-- `create_treeview(self, frame, columns, tab_name)`: Creates a Treeview widget for displaying data in a tab.
-- `display_dogs(self)`: Populates the Dogs tab with data from the database.
-- `display_monkeys(self)`: Populates the Monkeys tab with data from the database.
-- `add_intake_buttons(self)`: Adds buttons for adding new animals to the tabs.
-- `add_edit_buttons(self)`: Adds buttons for editing existing animals in the tabs.
+- `__init__()`: Initializes the dashboard, sets up the main window, and creates the main widgets.
+- `toggle_theme()`: Toggles between dark and light themes.
+- `create_widgets()`: Creates the main widgets for the dashboard, including labels, banners, and tabs.
+- `create_treeview()`: Creates a Treeview widget for displaying data in a tab.
+- `display_dogs()`: Populates the Dogs tab with data from the database.
+- `display_monkeys()`: Populates the Monkeys tab with data from the database.
+- `add_intake_buttons()`: Adds buttons for adding new animals to the tabs.
+- `add_edit_buttons()`: Adds buttons for editing existing animals in the tabs.
 
 ----
 ### 10. intake_gui.py
@@ -179,11 +179,11 @@ The main responsibilities of `intake_gui.py` include:
 
 #### Components
 
-- `__init__(self, root, dashboard)`: Initializes the intake GUI with the main window and dashboard reference.
-- `intake_new_dog(self)`: Creates a new window for dog intake, adds input fields and a submit button.
-- `submit_new_dog(self, entries, window)`: Collects and validates data from the input fields, inserts the new dog into the database, and refreshes the Dogs Treeview.
-- `intake_new_monkey(self)`: Creates a new window for monkey intake, adds input fields and a submit button.
-- `submit_new_monkey(self, entries, window)`: Collects and validates data from the input fields, inserts the new monkey into the database, and refreshes the Monkeys Treeview.
+- `__init__()`: Initializes the intake GUI with the main window and dashboard reference.
+- `intake_new_dog()`: Creates a new window for dog intake, adds input fields and a submit button.
+- `submit_new_dog()`: Collects and validates data from the input fields, inserts the new dog into the database, and refreshes the Dogs Treeview.
+- `intake_new_monkey()`: Creates a new window for monkey intake, adds input fields and a submit button.
+- `submit_new_monkey()`: Collects and validates data from the input fields, inserts the new monkey into the database, and refreshes the Monkeys Treeview.
 
 ----
 ### 11. edit_gui.py
@@ -200,10 +200,10 @@ The main responsibilities of `edit_gui.py` include:
 
 #### Components
 
-- `__init__(self, root, dashboard)`: Initializes the edit GUI with the main window and dashboard reference.
-- `edit_animal(self)`: Determines the selected tab and item, and opens the edit window.
-- `open_edit_window(self, item_values, animal_type, item_id, tree)`: Creates a new window for editing the selected animal, adds input fields and a submit button.
-- `submit_edit(self, entries, animal_type, item_id, tree, window)`: Collects and validates data from the input fields, updates the animal record in the database, and refreshes the Treeview.
+- `__init__()`: Initializes the edit GUI with the main window and dashboard reference.
+- `edit_animal()`: Determines the selected tab and item, and opens the edit window.
+- `open_edit_window()`: Creates a new window for editing the selected animal, adds input fields and a submit button.
+- `submit_edit()`: Collects and validates data from the input fields, updates the animal record in the database, and refreshes the Treeview.
 
 ----
 ### 12. sort_filter.py
@@ -219,11 +219,11 @@ The main responsibilities of `sort_filter.py` include:
 
 #### Components
 
-- `__init__(self)`: Initializes the sort and filter manager with dictionaries for sort order, filters, and detached items.
-- `sort_data(self, tree, column, tab)`: Sorts data in the specified Treeview widget based on the selected column and tab.
-- `create_filters(self, frame, tree, columns)`: Creates dropdown menus and apply buttons for filtering data in the specified columns.
-- `get_unique_values(self, tree, column)`: Retrieves unique values from a specified column in the Treeview widget for filtering.
-- `apply_filter(self, tree, column, combobox)`: Applies the selected filter to the data in the Treeview widget.
+- `__init__()`: Initializes the sort and filter manager with dictionaries for sort order, filters, and detached items.
+- `sort_data()`: Sorts data in the specified Treeview widget based on the selected column and tab.
+- `create_filters()`: Creates dropdown menus and apply buttons for filtering data in the specified columns.
+- `get_unique_values()`: Retrieves unique values from a specified column in the Treeview widget for filtering.
+- `apply_filter()`: Applies the selected filter to the data in the Treeview widget.
 
 ## Usage
 To run the application:
