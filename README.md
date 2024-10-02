@@ -1,4 +1,4 @@
-# SNHU CS499 Computer Science Capstone Project Repository
+# SNHU CS499 Computer Science Capstone Repository
 
 ## Grazioso Salvare Animal Rescue Database
 This project is designed to manage animal rescue data for Grazioso Salvare, an animal rescue organization. The system helps track rescue animals (dogs and monkeys), including their acquisition, training status, reservation, and service country. It features an organized structure for handling dogs and monkeys, utilizing OOP principles and Python’s class inheritance.
